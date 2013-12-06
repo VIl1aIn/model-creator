@@ -21,10 +21,17 @@ divert(-1)
 TEMPL_NAME(rzd_Sample_Template)dnl
 TEMPL_ATTR(statusNode,Node,AlertKey,Server)dnl
 
-divert(2)
+divert(2)dnl
 TEMPLATE(rzd_Template_New,Это шаблон из m4)dnl
 
+divert(3)dnl
+USER_ATTR(responsible,Петербургский ИВЦ)dnl
+USER_ATTR(level,no)dnl
+NUM_FORMULA(numStatus,Int(statusNode.Value*addAttr.Value),,,20,30)dnl
 
+divert(4)dnl
+WORST_DEP(childTempl_1,worstChild-1,Bad,Marginal,isChildInstancePropagation)dnl
+WORST_DEP(childTempl_2,worstChild-2,Bad,Marginal)dnl
 
 divert(5)dnl
 

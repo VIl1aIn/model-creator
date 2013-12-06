@@ -26,6 +26,38 @@ setTemplateDescription(
 '
 )
 
+define(`USER_ATTR',`addUserPreferencesForTemplate(
+"TEMPL_NAME",
+"$1",
+"$2",
+);
+'
+)
+
+define(`NUM_FORMULA',`addInternalAttributeToTemplate(
+"TEMPL_NAME"
+"$1",
+"$2",
+ifelse($3,,null,"$3"),
+ifelse($4,,null,"$4"),
+ifelse($5,,null,"$5"),
+ifelse($6,,null,"$6")
+);
+'
+)
+
+define(`WORST_DEP',`addWorstChildDependencyAttributeToTemplate(
+"TEMPL_NAME",
+"$1",
+"$2",
+"$3",
+"$4",
+ifelse($5,,false,true)
+);
+'
+)
+
+
 
 ifelse(
 addNewRawAttribute(
@@ -58,6 +90,8 @@ new String[] { ">=" },
 new String[] { "2" }, 
 0
 );
+
+
 
 )
 
