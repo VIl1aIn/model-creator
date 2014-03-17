@@ -42,6 +42,7 @@ divert(5)dnl
 #SERVICE(rzd_Sample_Child2,Пример сервиса ребёнка 2,Сервис создан средствами m4)dnl
 SERVICE(rzd_Sample_Service_Attr,Сервис с атрибутами,Создан by m4)dnl
 VALUES(rzd_Sample_Service_Attr,orw-ping-01,icmp_critical,orw-server-02)dnl
+USER_INST(rzd_Sample_Service_Attr,RESPONSIBLE,Калинградский ИВЦ)dnl
 #divert(7)
 #PARENT(rzd_Sample_Parent)dnl
 #CHILD(rzd_Child_0)dnl
