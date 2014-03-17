@@ -2,7 +2,7 @@ divert(-1)
 # Common functions
 # and variable
 
-define(`PARENT',`define(`PARENT',`$1')')
+define(`PARENT',`define(`PRNT',`$1')')
 
 # Common construction
 # foreach(x, (item_1, item_2, ..., item_n), stmt)

@@ -5,7 +5,7 @@ divert(-1)dnl
 # divert(2)
 
 
-define(`TEMPL_NAME',`define(`TEMPL_NAME',`$1')')
+define(`TEMPL_NAME',`define(`TEMPL_NME',`$1')')
 define(`TEMPL_ATTR',`
 	define(`ruleName',$1)
 	define(`CNT',0)
@@ -13,7 +13,7 @@ define(`TEMPL_ATTR',`
 ')dnl
 
 
-define(`TEMPLATE',`define(`TEMPL_NAME',`$1')
+define(`TEMPLATE',`define(`TEMPL_NME',`$1')
 createTemplate(
 "$1", 
 "cloud_svg.gif"
@@ -27,7 +27,7 @@ setTemplateDescription(
 )
 
 define(`USER_ATTR',`addUserPreferencesForTemplate(
-"TEMPL_NAME",
+"TEMPL_NME",
 "$1",
 "$2",
 );
@@ -35,7 +35,7 @@ define(`USER_ATTR',`addUserPreferencesForTemplate(
 )
 
 define(`NUM_FORMULA',`addInternalAttributeToTemplate(
-"TEMPL_NAME"
+"TEMPL_NME"
 "$1",
 "$2",
 ifelse($3,,null,"$3"),
@@ -47,7 +47,7 @@ ifelse($6,,null,"$6")
 )
 
 define(`WORST_DEP',`addWorstChildDependencyAttributeToTemplate(
-"TEMPL_NAME",
+"TEMPL_NME",
 "$1",
 "$2",
 "$3",

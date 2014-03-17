@@ -17,7 +17,7 @@ divert(-1)
 # 3 - description
 
 define(`SERVICE',`addServiceInstance(
-new String[] { "TEMPL_NAME" },
+new String[] { "TEMPL_NME" },
 "$1",
 "$2",
 "$3",
@@ -30,7 +30,7 @@ null,
 ')dnl
 
 define(`_CHILD',`addServiceInstanceDependency(
-"PARENT", 
+"PRNT", 
 "$1"
 );
 
@@ -47,7 +47,7 @@ define(`CHILD',`ifelse($#,0, ,$1,`', ,
 # _ATTR(<Service Name>,<attr Number>,<Value>)
 define(`_ATTR',
 `addInstanceIDFieldValuePair(
-"TEMPL_NAME",
+"TEMPL_NME",
 "ruleName",
 "field_$2",
 "$3",
@@ -66,5 +66,14 @@ clearAllInstanceIDFieldValuePairs(
 
 foreach(`FV',(shift($@)),`_ATTR($1,incr(CNT),`FV')'
 )
+'
+)dnl
+
+define(`USER_INST',`
+addUserPreferencesForInstance(
+"$1", 
+"$2", 
+"$3"
+);
 '
 )dnl
