@@ -21,7 +21,7 @@ define(`_foreach',
 # field_3 Summary
 #
 define(`_FIELDS',
-`define(field_$2,$1)
+`define(`field_$2',`$1')
  define(`CNT',$2)')
 
 define(`FIELDS',`ifelse($#,0,,$1,`',,
