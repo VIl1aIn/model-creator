@@ -35,15 +35,23 @@ WORST_DEP(childTempl_2,worstChild-2,Bad,Marginal)dnl
 
 divert(5)dnl
 
+dnl Так комментируем одну строку
 
-#SERVICE(rzd_Sample_Service,Пример сервиса,Сервис создан средствами m4)dnl
-#SERVICE(rzd_Sample_Parent,Пример сервиса отца,Сервис создан средствами m4)dnl
-#SERVICE(rzd_Sample_Child1,Пример сервиса ребёнка 1,Сервис создан средствами m4)dnl
-#SERVICE(rzd_Sample_Child2,Пример сервиса ребёнка 2,Сервис создан средствами m4)dnl
+SERVICE(rzd_Sample_Service,Пример сервиса,Сервис создан средствами m4)dnl
+SERVICE(rzd_Sample_Parent,Пример сервиса отца,Сервис создан средствами m4)dnl
+SERVICE(rzd_Sample_Child1,Пример сервиса ребёнка 1,Сервис создан средствами m4)dnl
+SERVICE(rzd_Sample_Child2,Пример сервиса ребёнка 2,Сервис создан средствами m4)dnl
 SERVICE(rzd_Sample_Service_Attr,Сервис с атрибутами,Создан by m4)dnl
 VALUES(rzd_Sample_Service_Attr,orw-ping-01,icmp_critical,orw-server-02)dnl
 USER_INST(rzd_Sample_Service_Attr,RESPONSIBLE,Калинградский ИВЦ)dnl
-#divert(7)
-#PARENT(rzd_Sample_Parent)dnl
-#CHILD(rzd_Child_0)dnl
-#CHILD(rzd_Sample_Child1,rzd_Sample_Child2,Child3,Child4,Child5)dnl
+
+ifelse(
+А так можно
+комментировать
+несколько строк
+)
+
+divert(7)
+PARENT(rzd_Sample_Parent)dnl
+CHILD(rzd_Child_0)dnl
+CHILD(rzd_Sample_Child1,rzd_Sample_Child2,Child3,Child4,Child5)dnl
