@@ -21,6 +21,14 @@ divert(-1)
 TEMPL_NAME(rzd_Sample_Template)dnl
 TEMPL_ATTR(statusNode,Node,AlertKey,Server)dnl
 
+ifelse(
+	Можно задать такую запись (это синтаксис m4)
+	для того чтобы не использовать длинные
+	имена сервисов много раз
+)
+
+define(`_shortName',`Very_Long_Name_Other_Service')dnl
+
 divert(2)dnl
 TEMPLATE(rzd_Template_New,Это шаблон из m4)dnl
 
@@ -36,6 +44,8 @@ WORST_DEP(childTempl_2,worstChild-2,Bad,Marginal)dnl
 divert(5)dnl
 
 dnl Так комментируем одну строку
+
+SERVICE(_shortName,Сервис Важный,Сервис с очень длинным именем)dnl
 
 SERVICE(rzd_Sample_Service,Пример сервиса,Сервис создан средствами m4)dnl
 SERVICE(rzd_Sample_Parent,Пример сервиса отца,Сервис создан средствами m4)dnl
