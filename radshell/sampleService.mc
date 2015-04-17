@@ -21,6 +21,11 @@ divert(-1)
 TEMPL_NAME(rzd_Sample_Template)dnl
 TEMPL_ATTR(statusNode,Node,AlertKey,Server)dnl
 
+# Макрос указывает, что сервисы будут создаваться с привязкой на
+# несколько шаблонов
+
+TEMPL_SERV(rzd_Template_1,rzd_Template_2,rzd_Template_Value)dnl
+
 ifelse(
 	Можно задать такую запись (это синтаксис m4)
 	для того чтобы не использовать длинные
