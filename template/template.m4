@@ -4,13 +4,15 @@ divert(-1)dnl
 #
 # divert(2)
 
-
+# For attrib and one template
 define(`TEMPL_NAME',`define(`TEMPL_NME',`$1')')
 define(`TEMPL_ATTR',`
 	define(`ruleName',$1)
 	define(`CNT',0)
 	FIELDS(shift($@))
 ')dnl
+
+define(`TEMPL_SERV',`define(`TMPL_SRV',`"$1"foreach(`t',(shift($*)),`,"t"')')')dnl
 
 
 define(`TEMPLATE',`define(`TEMPL_NME',`$1')
