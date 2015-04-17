@@ -17,7 +17,7 @@ divert(-1)
 # 3 - description
 
 define(`SERVICE',`addServiceInstance(
-new String[] { "TEMPL_NME" },
+new String[] { ifdef(`TMPL_SRV',`TMPL_SRV',`"TEMPL_NME"') },
 "$1",
 "$2",
 "$3",
