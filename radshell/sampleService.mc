@@ -53,7 +53,10 @@ dnl Так комментируем одну строку
 SERVICE(_shortName,Сервис Важный,Сервис с очень длинным именем)dnl
 
 SERVICE(rzd_Sample_Service,Пример сервиса,Сервис создан средствами m4)dnl
-SERVICE(rzd_Sample_Parent,Пример сервиса отца,Сервис создан средствами m4)dnl
+
+dnl Если надо использовать '"' в именах, используем '\' см. ниже
+SERVICE(rzd_Sample_Parent,Пример сервиса отца,Сервис создан средствами \"m4\")dnl
+
 SERVICE(rzd_Sample_Child1,Пример сервиса ребёнка 1,Сервис создан средствами m4)dnl
 SERVICE(rzd_Sample_Child2,Пример сервиса ребёнка 2,Сервис создан средствами m4)dnl
 SERVICE(rzd_Sample_Service_Attr,Сервис с атрибутами,Создан by m4)dnl
