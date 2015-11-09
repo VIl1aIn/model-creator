@@ -59,6 +59,45 @@ ifelse($5,,false,true)
 '
 )
 
+define(`RULE_DESCR',`define(`RULE_NME',`$1')
+addUserPreferencesForTemplate(
+"TEMPL_NME",
+"RuleDisplayName_$2",
+"$1"
+);
+
+addUserPreferencesForTemplate(
+"TEMPL_NME",
+"RuleDescription_$1",
+"$3"
+);
+'
+)
+
+define(`NUMAGG_DEP',`addPolicyDependencyAttributeToTemplate(
+"TEMPL_NME",
+"$1",
+"OverallAttribute",
+"RULE_NME",
+"PolicyAttribute_`'TEMPL_NME`'_`'RULE_NME`'1",
+"/* $2 */ENDLINEStatus = 0; // initialize Status varENDLINENumericAttributeFunctions.$2(ChildrenStatusArray, AllChildrenArray, ServiceInstance, Status);ENDLINE", 
+false
+);
+'
+)
+
+define(`SET_STATUS',`addInternalAttributeToTemplate(
+"TEMPL_NME",
+"RULE_NME`'_Status",
+"RULE_NME.Value",
+"DontTestFormula",
+null,
+"$2",
+"$1",
+false
+);
+'
+)
 
 
 ifelse(

@@ -35,6 +35,22 @@ ifelse(
 define(`_shortName',`Very_Long_Name_Other_Service')dnl
 
 divert(2)dnl
+dnl Здесь пример как создать шаблон для Numerical Aggregation
+dnl с использованием функции из политики
+
+dnl Создаем шаблон
+TEMPLATE(rzd_Templ_Parent,Родитель для NumAgg правила)dnl
+
+divert(3)dnl Можно в том же потоке (2), если идет следом
+dnl Создаем описание правила (name,Display,Description)
+RULE_DESCR(worstNumAgg,worstNumAgg,Worst Numerical Aggregation)dnl
+dnl Создаем зависимость
+NUMAGG_DEP(rzd_Templ_Child,policyFunction)dnl
+dnl Задаем статусы, если нужно (Marginal,Critical)
+SET_STATUS(3,5)dnl
+
+
+divert(2)dnl
 TEMPLATE(rzd_Template_New,Это шаблон из m4)dnl
 
 divert(3)dnl
@@ -45,6 +61,9 @@ NUM_FORMULA(numStatus,Int(statusNode.Value*addAttr.Value),,,20,30)dnl
 divert(4)dnl
 WORST_DEP(childTempl_1,worstChild-1,Bad,Marginal,isChildInstancePropagation)dnl
 WORST_DEP(childTempl_2,worstChild-2,Bad,Marginal)dnl
+
+
+
 
 divert(5)dnl
 
