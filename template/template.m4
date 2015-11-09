@@ -62,8 +62,8 @@ ifelse($5,,false,true)
 define(`RULE_DESCR',`define(`RULE_NME',`$1')
 addUserPreferencesForTemplate(
 "TEMPL_NME",
-"RuleDisplayName_$2",
-"$1"
+"RuleDisplayName_$1",
+"$2"
 );
 
 addUserPreferencesForTemplate(
@@ -74,7 +74,7 @@ addUserPreferencesForTemplate(
 '
 )
 
-define(`NUMAGG_DEP',`addPolicyDependencyAttributeToTemplate(
+define(`POLCNA_DEP',`addPolicyDependencyAttributeToTemplate(
 "TEMPL_NME",
 "$1",
 "OverallAttribute",
@@ -95,6 +95,15 @@ null,
 "$2",
 "$1",
 false
+);
+'
+)
+
+define(`FUNCNA_DEP',`add$2DependencyAttributeToTemplate(
+"TEMPL_NME", 
+"$1", 
+"OverallAttribute", 
+"RULE_NME"
 );
 '
 )
