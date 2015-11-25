@@ -26,10 +26,20 @@ TEMPL_ATTR(statusNode,Node,AlertKey,Server)dnl
 
 TEMPL_SERV(rzd_Template_1,rzd_Template_2,rzd_Template_Value)dnl
 
+dnl Так комментируем одну строку
+
+ifelse(
+	Так можно комментировать несколько строк.
+	Если внутри есть скобка то к ней обязательно должна быть пара.
+	Не должно быть запятых.
+)
+
+
 ifelse(
 	Можно задать такую запись (это синтаксис m4)
 	для того чтобы не использовать длинные
 	имена сервисов много раз
+	или задать переменную
 )
 
 define(`_shortName',`Very_Long_Name_Other_Service')dnl
@@ -66,13 +76,18 @@ WORST_DEP(childTempl_1,worstChild-1,Bad,Marginal,isChildInstancePropagation)dnl
 WORST_DEP(childTempl_2,worstChild-2,Bad,Marginal)dnl
 
 
-
-
 divert(5)dnl
 
-dnl Так комментируем одну строку
-
 SERVICE(_shortName,Сервис Важный,Сервис с очень длинным именем)dnl
+
+dnl Разные варианты использования VALUES
+
+SERVICE(rzd_Values_Test,Разные значения,Здесь будет разный синтаксис)dnl
+dnl Можно не писать имя сервиса. Имя берется из последнего SERVICE
+VALUES(ITMSRV32,icmp_critical,rzd-server-01)dnl
+VALUES(2,ITMSRV32,icmp_warning,rzd-server-02)dnl
+VALUES(rzd_Values_Test,3,ITMSRV32,icmp_major,rzd-server-03)dnl
+
 
 SERVICE(rzd_Sample_Service,Пример сервиса,Сервис создан средствами m4)dnl
 
@@ -83,15 +98,18 @@ SERVICE(rzd_Sample_Child1,Пример сервиса ребёнка 1,Серв�
 SERVICE(rzd_Sample_Child2,Пример сервиса ребёнка 2,Сервис создан средствами m4)dnl
 SERVICE(rzd_Sample_Service_Attr,Сервис с атрибутами,Создан by m4)dnl
 VALUES(rzd_Sample_Service_Attr,orw-ping-01,icmp_critical,orw-server-02)dnl
-VALUES_NEXT(rzd_Sample_Service_Attr,2,orw-ping-01,icmp_critical,orw-server-03)dnl
-VALUES_NEXT(rzd_Sample_Service_Attr,3,orw-ping-01,icmp_critical,orw-server-04)dnl
+VALUES(rzd_Sample_Service_Attr,2,orw-ping-01,icmp_critical,orw-server-03)dnl
+VALUES(rzd_Sample_Service_Attr,3,orw-ping-01,icmp_critical,orw-server-04)dnl
 USER_INST(rzd_Sample_Service_Attr,RESPONSIBLE,Калинградский ИВЦ)dnl
 
-ifelse(
-А так можно
-комментировать
-несколько строк
-)
+dnl Здесь пример с сокращением имени сервиса, т.е. для повторяющегося имени сервиса
+dnl его можно опустить
+
+SERVICE(rzd_Miss_Service,Default Name,Имя при создании атрибутов пропускаем)dnl
+VALUES(ping,icmp_citical,server-01)dnl
+VALUES(2,ping,icmp_warning,server-02)dnl
+USER_INST(RESPONSIBLE,С-Пб ИВЦ)dnl
+
 
 divert(7)
 PARENT(rzd_Sample_Parent)dnl

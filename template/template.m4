@@ -1,4 +1,4 @@
-divert(-1)dnl
+divert(-1)
 #
 # Macros for create and set template
 #
@@ -9,6 +9,7 @@ define(`TEMPL_NAME',`define(`TEMPL_NME',`$1')')
 define(`TEMPL_ATTR',`
 	define(`ruleName',$1)
 	define(`CNT',0)
+	define(`CtrlNum',`$#')
 	FIELDS(shift($@))
 ')dnl
 

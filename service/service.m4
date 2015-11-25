@@ -26,7 +26,7 @@ null,
 null,
 "REGULAR"
 );
-
+define(`SRV_NAME',`$1')
 ')dnl
 
 define(`_CHILD',`addServiceInstanceDependency(
@@ -57,21 +57,42 @@ ifdef(`recordNum',`recordNum',`1'),
 define(`CNT',$2)dnl
 ')dnl
 
-dnl For First and Single record
 
-define(`VALUES',
-`define(`CNT',0)undefine(`recordNum')
-clearAllInstanceIDFieldValuePairs(
-"$1"
-);
 
-foreach(`FV',(shift($@)),`_ATTR($1,incr(CNT),`FV')'
+####### Это оставлено для совместимости с макросом VALUES_NEXT
+#### Сейчас для всего используется VALUES
+#### Когда все mc будут исправлены можно будет удалить
+define(`VALUES_NEXT',
+`define(`ChkF',`regexp($1,^[0-9]+$)')
+ifelse($#,incr(CtrlNum),
+	_VALUES_NEXT($@),
+	$#,decr(CtrlNum),
+	_VALUES_NEXT(SRV_NAME,1,$@),
+	ChkF,-1,
+	_VALUES_NEXT($1,1,shift($@)),
+	_VALUES_NEXT(SRV_NAME,$@)
+)'
 )
-')dnl
+
+###### Конец блока для удаления ##########
+
+
+
+dnl VALUES([name service],[<N>],Attr,...)
+define(`VALUES',
+`define(`ChkF',`regexp($1,^[0-9]+$)')
+ifelse($#,incr(CtrlNum),
+	_VALUES_NEXT($@),
+	$#,decr(CtrlNum),
+	_VALUES_NEXT(SRV_NAME,1,$@),
+	ChkF,-1,
+	_VALUES_NEXT($1,1,shift($@)),
+	_VALUES_NEXT(SRV_NAME,$@)
+)'
+)
 
 dnl For several and next records into service
-
-define(`VALUES_NEXT',
+define(`_VALUES_NEXT',
 `define(`CNT',0)define(`recordNum',`$2')
 ifelse(`$2',`1',`
 clearAllInstanceIDFieldValuePairs(
@@ -83,10 +104,22 @@ foreach(`FV',(shift(shift($@))),`_ATTR($1,incr(CNT),`FV')'
 )
 ')dnl
 
+dnl USER_INST([service name,]<Attr>,<Value>)
+dnl
 define(`USER_INST',`
+ifelse($#,3,
+	_USER_INST($@),
+	_USER_INST(SRV_NAME,$@)
+)
+'
+)
+
+# _USER_INST(<Service>,<Attr>,<Value>)
+#
+define(`_USER_INST',`
 addUserPreferencesForInstance(
-"$1", 
-"$2", 
+"$1",
+"$2",
 "$3"
 );
 ')dnl
