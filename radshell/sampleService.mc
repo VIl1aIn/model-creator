@@ -110,6 +110,30 @@ VALUES(ping,icmp_citical,server-01)dnl
 VALUES(2,ping,icmp_warning,server-02)dnl
 USER_INST(RESPONSIBLE,С-Пб ИВЦ)dnl
 
+dnl Пример как задействовать два шаблона с атрибутами и значениями
+divert(-1)
+# Это первый атрибут со значениями
+TEMPL_NAME(rzd_Attr_1)
+TEMPL_ATTR(statusServer,Node)
+TEMPL_SERV(rzd_Attr_1,rzd_Attr_2)
+divert(5)dnl
+dnl Создаем сам сервис
+SERVICE(rzd_Service_Att2,Service,Сервис с двумя шаблонами)dnl\
+VALUES(orw-host-01)dnl
+
+divert(-1)
+# Это второй атрибут со значениями
+# 0 в VALUES говорит о том, что не надо сбрасывать пары атрибутов
+TEMPL_NAME(rzd_Attr_2)
+TEMPL_ATTR(statusAlertKey,AlertKey)
+divert(5)dnl
+VALUES(0,ICMP_FAIL)dnl
+VALUES(2,ICMP_WARNING)dnl
+dnl Здесь будет использоваться имя сервиса из последнего макроса SERVICE
+dnl поэтому его не указываем (rzd_Attr_2)
+
+
+
 
 divert(7)
 PARENT(rzd_Sample_Parent)dnl

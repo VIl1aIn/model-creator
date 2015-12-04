@@ -38,8 +38,7 @@ define(`_CHILD',`addServiceInstanceDependency(
 
 define(`CHILD',`ifelse($#,0, ,$1,`', ,
 	_CHILD($1)ifelse($#,1,,`CHILD(shift($@))'
-		)
-	)'
+))'
 )dnl
 
 
@@ -51,7 +50,7 @@ define(`_ATTR',
 "ruleName",
 "field_$2",
 "$3",
-ifdef(`recordNum',`recordNum',`1'),
+ifdef(`recordNum',`ifelse(recordNum,0,`1',`recordNum')',`1'),
 "$1"
 );
 define(`CNT',$2)dnl
