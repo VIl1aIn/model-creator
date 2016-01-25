@@ -32,3 +32,4 @@ define(`FIELDS',`ifelse($#,0,,$1,`',,
 
 include(../service/service.m4)
 include(../template/template.m4)
+include(../define/def_templ.mc)
