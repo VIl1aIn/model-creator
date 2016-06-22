@@ -18,6 +18,11 @@ TEMPL_NAME(rzd_OS_EIF_AlertKey_noBad)
 TEMPL_ATTR(statusWarn,AlertKey,Node)
 ')
 
+define(`_template_AlertKey_Bad',`
+TEMPL_NAME(rzd_OS_EIF_AlertKey_Bad)
+TEMPL_ATTR(statusCritical,AlertKey,Node)
+')
+
 define(`_template_AlertKey_Display',`
 TEMPL_NAME(rzd_OS_EIF_AlertKey_Display)
 TEMPL_ATTR(statusApplSys,AlertKey,ITMDisplayItem,Node)
