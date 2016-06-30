@@ -42,3 +42,8 @@ define(`_template_EP_ITNM',`
 TEMPL_NAME(rzd_EndPoint_ITNM)
 TEMPL_ATTR(statusPingITNM,EventID,NodeAlias)
 ')
+
+define(`_template_Sys_LZ',`
+TEMPL_NAME(rzd_System_LZ)
+TEMPL_ATTR(statusNode,Node)
+')
