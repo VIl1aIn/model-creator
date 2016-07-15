@@ -47,3 +47,13 @@ define(`_template_Sys_LZ',`
 TEMPL_NAME(rzd_System_LZ)
 TEMPL_ATTR(statusNode,Node)
 ')
+
+define(`_template_Sys_NT',`
+TEMPL_NAME(rzd_System_NT)
+TEMPL_ATTR(statusNode,Node)
+')
+
+define(`_template_Sys_UX',`
+TEMPL_NAME(rzd_System_UX)
+TEMPL_ATTR(statusNode,Node)
+')
